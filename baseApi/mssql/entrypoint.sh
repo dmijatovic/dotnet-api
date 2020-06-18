@@ -1,0 +1,1 @@
+/opt/mssql/bin/sqlservr & /home/app/initdb.sh

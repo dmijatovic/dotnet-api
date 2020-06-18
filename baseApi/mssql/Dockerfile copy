@@ -1,0 +1,12 @@
+FROM mcr.microsoft.com/mssql/server:2019-latest
+
+# Create app directory
+RUN mkdir -p /home/app
+WORKDIR /home/app
+
+# copy scripts - LAST arg is DESTINATION
+COPY initdb.sh entrypoint.sh /home/app/
+
+RUN chmod +x /home/app/initdb.sh
+
+CMD /bin/bash ./entrypoint.sh

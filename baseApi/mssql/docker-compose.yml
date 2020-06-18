@@ -1,0 +1,20 @@
+version: '3'
+
+services:
+  ms-sql:
+    container_name: ms-sql
+    build: .
+    image: mssqldb:v0.1
+    env_file:
+      - mssql.env
+    ports:
+      - "1433:1433"
+    volumes:
+      - mssql-data:/var/opt/mssql/
+      # place setup sql to app - it will be executed by sqlcmd
+      - ./setup.sql:/home/app/setup.sql
+    # command errors out as file not found. So it seems to be executed too early
+    # command: "/opt/mssql/bin/sqlservr"
+
+volumes:
+  mssql-data:

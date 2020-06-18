@@ -1,0 +1,4 @@
+# ignore dotnet internals
+bin\
+obj\
+build
